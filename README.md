@@ -4,7 +4,7 @@ A public Q&A platform where people self-assign topic roles, questions route to t
 
 Positioned as the escalation path for AI failure — people come here when the AI answered badly and nothing existing fits.
 
-> **Status:** Pre-development planning · **Contributors:** [@sho6000](https://github.com/sho6000) · [@YojitShinde](https://github.com/YojitShinde)
+> **Status:** Pre-development planning · **Contributors:** [@sho6000](https://github.com/sho6000) · [@YojitShinde](https://github.com/YojitShinde) · [@amaljyothis2003](https://github.com/amaljyothis2003)
 > Living document. Modify anytime.
 
 ---
