@@ -65,7 +65,7 @@ MySQL
                               │
                               ▼
                     ┌───────────────────┐
-                    │  QUESTION RECEIVED│
+                    │ QUESTION RECEIVED │
                     └─────────┬─────────┘
                               │
                  ┌────────────┴────────────┐
@@ -74,9 +74,9 @@ MySQL
         ┌──────────────────┐      ┌───────────────────┐
         │  SIMILAR SEARCH  │      │ APPROPRIATENESS   │
         │                  │      │                   │
-        │ BM25             │      │ Rules             │
-        │ +                │      │ +                 │
-        │ Embeddings       │      │ Lightweight LM    │
+        │ BM25             │      │  Lightweight LM   │
+        │ +                │      │                   │
+        │ Embeddings       │      │                   │
         └────────┬─────────┘      └─────────┬─────────┘
                  │                          │
                  ▼                          ▼
@@ -303,10 +303,6 @@ These questions may be semantically similar even if they don't contain exactly t
 
 # 8. BM25 + Embeddings together
 
-We don't need to choose one.
-
-Use both.
-
 ```text
                   QUESTION
                       │
@@ -334,10 +330,6 @@ This gives us:
 
 - **BM25 → strong exact-term matching**
 - **Embeddings → strong semantic matching**
-
-For the MVP, this is enough.
-
-A more expensive model-based reranker can be added later if evaluation shows that it provides meaningful improvement.
 
 ---
 
@@ -386,7 +378,7 @@ Appropriateness asks:
 
 For this we use:
 
-### Lightweight LM + deterministic checks
+### Lightweight LM
 
 For the lightweight LM, the proposed model is:
 
@@ -460,32 +452,7 @@ The flow is:
 
 ---
 
-# 13. Deterministic checks
-
-Some things are better handled without an LM.
-
-For example:
-
-```text
-OPENAI_API_KEY=sk-xxxxxxxx
-password=xxxxxxxx
-AWS_SECRET_ACCESS_KEY=xxxxxxxx
-```
-
-A secret-detection mechanism can identify these directly.
-
-Similarly, basic spam patterns can be detected using rules.
-
-This gives us:
-
-```text
-Rules → obvious/high-confidence cases
-LM    → contextual/ambiguous cases
-```
-
----
-
-# 14. Lightweight LM inference
+# 13. Lightweight LM inference
 
 The LM receives:
 
@@ -534,7 +501,7 @@ For our example, it could return:
 
 ---
 
-# 15. The LM does NOT make the final decision
+# 14. The LM does NOT make the final decision
 
 This is an important architectural principle.
 
@@ -566,7 +533,7 @@ This prevents the model from becoming the authority over moderation.
 
 ---
 
-# 16. Example — unclear question
+# 15. Example — unclear question
 
 Suppose the user submits:
 
@@ -595,7 +562,7 @@ The user edits it.
 
 ---
 
-# 17. Example — spam
+# 16. Example — spam
 
 Suppose someone submits:
 
@@ -618,7 +585,7 @@ The platform can then show a warning or send the post to the moderation path.
 
 ---
 
-# 18. Example — legitimate question
+# 17. Example — legitimate question
 
 Our Spring Boot question produces:
 
@@ -639,7 +606,7 @@ The user can continue.
 
 ---
 
-# 19. Step 5 — Review Screen
+# 18. Step 5 — Review Screen
 
 The outputs of both systems are presented together.
 
@@ -679,7 +646,7 @@ This gives the user everything they need without creating a complicated workflow
 
 ---
 
-# 20. Final End-to-End Flow
+# 19. Final End-to-End Flow
 
 ```text
                          USER
@@ -703,7 +670,7 @@ This gives the user everything they need without creating a complicated workflow
               ▼                         ▼
      ┌──────────────────┐      ┌─────────────────────┐
      │  SIMILAR SEARCH  │      │  APPROPRIATENESS    │
-     └────────┬─────────┘      └──────────┬──────────┘
+     └────────┬─────────┘      └─────────┬───────────┘
               │                          │
        ┌──────┴──────┐            ┌──────┴──────┐
        ▼             ▼            ▼             ▼
@@ -714,7 +681,7 @@ This gives the user everything they need without creating a complicated workflow
        │             │                         │
        └──────┬──────┘                         │
               ▼                                │
-       Merge + Rank                             │
+       Merge + Rank                            │
               │                                │
               ▼                                ▼
       Related Questions                  Policy Signals
