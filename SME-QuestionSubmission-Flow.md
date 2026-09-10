@@ -615,7 +615,6 @@ The outputs of both systems are presented together.
 │ YOUR TAGS                                │
 │                                          │
 │ [Java] [Spring Boot] [MySQL]             │
-│ [REST APIs] [Debugging]                  │
 │                                          │
 ├──────────────────────────────────────────┤
 │                                          │
