@@ -672,9 +672,9 @@ This gives the user everything they need without creating a complicated workflow
      │  SIMILAR SEARCH  │      │  APPROPRIATENESS    │
      └────────┬─────────┘      └─────────┬───────────┘
               │                          │
-       ┌──────┴──────┐            ┌──────┴──────┐
-       ▼             ▼            ▼             ▼
-     BM25       Embeddings      Rules      Qwen3-4B
+       ┌──────┴──────┐                   ┴─────┐
+       ▼             ▼                         ▼
+     BM25       Embeddings                 Qwen3-4B
        │             │                         │
        ▼             ▼                         ▼
      Top-K         Top-K                  Classification
