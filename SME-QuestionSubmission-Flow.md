@@ -46,8 +46,6 @@ Imagine a developer submits:
 Java
 Spring Boot
 MySQL
-REST APIs
-Debugging
 ```
 
 ---
