@@ -428,9 +428,6 @@ The flow is:
                  │
                  ▼
        ┌───────────────────┐
-       │ Deterministic     │
-       │ Checks            │
-       │                   │
        │ Secrets           │
        │ Basic spam        │
        │ Obvious patterns  │
